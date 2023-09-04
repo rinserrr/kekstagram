@@ -2,9 +2,6 @@
 /* eslint-disable no-console */
 
 
-import generateArrayImagesState from './images-generator.js';
+import {imageDraw} from './images-draw.js';
 
-generateArrayImagesState();
-
-const images = generateArrayImagesState();
-console.log('images : ', images);
+imageDraw();
