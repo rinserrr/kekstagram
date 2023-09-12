@@ -12,7 +12,7 @@ console.log('images : ', images);
 // console.log(images[0].url);
 
 
-export const imageDraw = () => {
+const imageDraw = () => {
   /*
       <!-- Контейнер для изображений от других пользователей -->
       <section class="pictures  container">
@@ -41,17 +41,21 @@ export const imageDraw = () => {
   // Создаём "коробочку"
   const fragment = document.createDocumentFragment();
 
-  images.forEach(({url, likes, comments}) => {
+  images.forEach(({id, url, likes, comments}) => {
     // Клонируем элемент со всеми "внутренностями"
     const element = template.cloneNode(true);
 
-    // Добавляем порядковый класс, который начинается с единицы, а не с нуля, поэтому 'i + 1'
+    // Добавляем класс
     element.classList.add('picture');
 
     // Записываем содержимое
     element.querySelector('.picture__img').src = url;
     element.querySelector('.picture__comments').textContent = comments.length;
     element.querySelector('.picture__likes').textContent = likes;
+
+    // устанавливаем data-id атрибут на картинку и ссылку
+    element.querySelector('img').dataset.id = id;
+    // element.dataset.id = id;
 
     // Складываем созданные элементы в "коробочку"
     fragment.appendChild(element);
@@ -61,3 +65,18 @@ export const imageDraw = () => {
   pictures.appendChild(fragment);
 };
 
+
+const imageDrawClear = () => {
+  // куда складываем новые элементы
+  const pictures = document.querySelector('.pictures');
+
+  // массивы ссылок
+  const linkArr = pictures.querySelectorAll('a');
+
+  linkArr.forEach((item) => {
+    item.textContent = '';
+  });
+};
+
+
+export {imageDraw, imageDrawClear, images};

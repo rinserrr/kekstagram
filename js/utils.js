@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 
 
-export const getRandomInt = (min, max) => {
+const getRandomInt = (min, max) => {
   const range = [min, max];
 
   if (!range.every(Number.isInteger)) {
@@ -17,7 +17,7 @@ export const getRandomInt = (min, max) => {
 };
 
 
-export const generateIdClosure = (min, max) => {
+const generateIdClosure = (min, max) => {
   const checkGeneratedId = [];
 
   const generateId = () => {
@@ -37,9 +37,25 @@ export const generateIdClosure = (min, max) => {
 };
 
 
-export const getRandomArrayItem = (items) => {
+const getRandomArrayItem = (items) => {
   const lastIndex = Math.max(0, items.length - 1);
   const index = getRandomInt(0, lastIndex);
 
   return items[index];
 };
+
+
+const isKeyEnter = (evt) => {
+  if (evt.key === 'Enter') {
+    return true;
+  }
+};
+
+const isKeyEscape = (evt) => {
+  if (evt.key === 'Escape') {
+    return true;
+  }
+};
+
+
+export {getRandomInt, generateIdClosure, getRandomArrayItem, isKeyEnter, isKeyEscape};
