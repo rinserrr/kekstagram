@@ -18,7 +18,7 @@ const bigPictureModal = document.querySelector('.big-picture');
 const bigPictureModalClose = document.querySelector('.big-picture__cancel');
 
 
-function imageDescription(id) {
+const imageDescription = (id) => {
   images.find((item) => {
     if (item.id === id) {
       document.querySelector('.social__caption').textContent = item.description;
@@ -26,10 +26,10 @@ function imageDescription(id) {
       document.querySelector('body').classList.add('modal-open');
     }
   });
-}
+};
 
 
-function createCommentElement(comment) {
+const createCommentElement = (comment) => {
   const templateFragment = document.querySelector('#pictureComment').content;
   const template = templateFragment.querySelector('li');
   const element = template.cloneNode(true);
@@ -38,10 +38,10 @@ function createCommentElement(comment) {
   element.querySelector('.social__picture').alt = comment.names;
   element.querySelector('.social__text').textContent = comment.message;
   return element;
-}
+};
 
 
-function openUserModal(evt) {
+const openUserModal = (evt) => {
   bigPictureModal.classList.remove('hidden');
   bigPictureModal.setAttribute('tabindex', '0');
   bigPictureModal.focus();
@@ -62,7 +62,6 @@ function openUserModal(evt) {
   let commentsCountMin = document.querySelector('.comments-count-min');
   commentsCount.textContent = commentsSize;
   loadedComments = 0;
-
 
   commentsToLoad = Math.min(commentsSize, 5);
 
@@ -88,10 +87,10 @@ function openUserModal(evt) {
   });
 
   closeUserModal();
-}
+};
 
 
-function showComments(idImage, pictures, commentsSize, commentsCountMin) {
+const showComments = (idImage, pictures, commentsSize, commentsCountMin) => {
   remainingComments = commentsSize - loadedComments;
   commentsToLoad = Math.min(remainingComments, 5);
 
@@ -105,50 +104,43 @@ function showComments(idImage, pictures, commentsSize, commentsCountMin) {
 
   loadedComments += commentsToLoad;
   commentsCountMin.textContent = loadedComments;
-  console.log('loadedComments : ', loadedComments);
 
   if (loadedComments >= commentsSize) {
     document.querySelector('.social__comments-loader').classList.add('hidden');
   }
-}
+};
 
 
-function clsComments() {
+const clsComments = () => {
   loadedComments = 0;
   remainingComments = 0;
   commentsToLoad = 0;
-  console.log('loadedComments : ', loadedComments);
-  console.log('remainingComments : ', remainingComments);
-  console.log('commentsToLoad : ', commentsToLoad);
-}
+
+  bigPictureModal.classList.add('hidden');
+  document.querySelector('body').classList.remove('modal-open');
+
+  location.reload();
+};
 
 
-function closeUserModal() {
+const closeUserModal = () => {
   bigPictureModalClose.addEventListener('click', () => {
     clsComments();
-
-    bigPictureModal.classList.add('hidden');
-    document.querySelector('body').classList.remove('modal-open');
   });
 
   bigPictureModalClose.addEventListener('keydown', (evt) => {
     if (isKeyEnter(evt)) {
       clsComments();
-
-      bigPictureModal.classList.add('hidden');
-      document.querySelector('body').classList.remove('modal-open');
     }
   });
 
   bigPictureModal.addEventListener('keydown', (evt) => {
     if (isKeyEscape(evt)) {
+      evt.preventDefault();
       clsComments();
-
-      bigPictureModal.classList.add('hidden');
-      document.querySelector('body').classList.remove('modal-open');
     }
   });
-}
+};
 
 
 export {openUserModal, modalPicturesList};
