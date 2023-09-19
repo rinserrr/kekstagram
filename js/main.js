@@ -39,5 +39,5 @@ modalPicturesList.addEventListener('keydown', (evt) => {
 imgUploadInput.addEventListener('change', function (evt) {
   evt.preventDefault();
 
-  imageUpload(this);
+  imageUpload(this, evt);
 });

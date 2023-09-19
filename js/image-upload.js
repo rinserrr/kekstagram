@@ -3,9 +3,11 @@
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploaPreview = document.querySelector('.img-upload__preview');
 const effectsPreview = document.querySelectorAll('.effects__preview');
+import {imageUploadScale} from './image-upload-scale.js';
 
 
-const imageUpload = (input) => {
+const imageUpload = (input, evt) => {
+  evt.preventDefault();
   const reader = new FileReader();
   const image = new Image();
   let uploadedImage = '';
@@ -22,6 +24,8 @@ const imageUpload = (input) => {
     effectsPreview.forEach((item) => {
       item.style.backgroundImage = `url(${uploadedImage})`;
     });
+
+    imageUploadScale();
   });
 
   reader.readAsDataURL(input.files[0]);
