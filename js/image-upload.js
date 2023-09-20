@@ -1,9 +1,11 @@
 /* eslint-disable no-invalid-this */
 
+import {imageUploadScale} from './image-upload-scale.js';
+
+
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const imgUploaPreview = document.querySelector('.img-upload__preview');
 const effectsPreview = document.querySelectorAll('.effects__preview');
-import {imageUploadScale} from './image-upload-scale.js';
 
 
 const imageUpload = (input, evt) => {

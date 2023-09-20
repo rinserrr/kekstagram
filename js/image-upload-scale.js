@@ -1,3 +1,6 @@
+import {imageUploadFilter} from './image-upload-filter.js';
+
+
 const imageUploadScale = () => {
   const scaleControSmaller = document.querySelector('.scale__control--smaller');
   const scaleControlBigger = document.querySelector('.scale__control--bigger');
@@ -30,6 +33,9 @@ const imageUploadScale = () => {
       scaleControlBigger.disabled = true;
     }
   });
+
+
+  imageUploadFilter();
 };
 
 
