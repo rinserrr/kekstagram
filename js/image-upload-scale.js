@@ -8,6 +8,7 @@ const imageUploadScale = () => {
   let imgUploadPreviewScale = document.querySelector('.img-upload__preview img');
   let scaleControlValue = 50;
   scaleControl.value = `${scaleControlValue}%`;
+  imgUploadPreviewScale.style.transform = `scale(${scaleControlValue / 100})`;
 
 
   scaleControSmaller.addEventListener('click', () => {

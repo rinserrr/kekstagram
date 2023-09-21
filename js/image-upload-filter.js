@@ -16,7 +16,7 @@ const imageUploadFilter = () => {
     }
 
     if (evt.target.classList.contains('effects__preview--marvin')) {
-      imgUploadPreviewScale.style.filter = 'invert(30%)';
+      imgUploadPreviewScale.style.filter = 'invert(90%)';
     }
 
     if (evt.target.classList.contains('effects__preview--phobos')) {
