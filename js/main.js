@@ -1,3 +1,4 @@
+/* eslint-disable no-invalid-this */
 /* eslint-disable indent */
 /* eslint-disable max-nested-callbacks */
 /* eslint-disable consistent-return */
@@ -7,6 +8,10 @@
 import {imageDraw} from './images-draw.js';
 import {isKeyEnter} from './utils.js';
 import {openUserModal, modalPicturesList} from './image-dialog.js';
+import {imageUpload} from './image-upload.js';
+
+
+const imgUploadInput = document.querySelector('.img-upload__input');
 
 
 imageDraw();
@@ -27,4 +32,12 @@ modalPicturesList.addEventListener('keydown', (evt) => {
       openUserModal(evt);
     }
   }
+});
+
+
+// загрузка изображения
+imgUploadInput.addEventListener('change', function (evt) {
+  evt.preventDefault();
+
+  imageUpload(this, evt);
 });
