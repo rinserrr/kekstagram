@@ -686,7 +686,7 @@ main {
   width: 450px;
 
   margin: 0 auto;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   padding: 5px 10px;
 
   font-family: "Open Sans", "Arial", sans-serif;
@@ -1407,4 +1407,33 @@ main {
 
 .hidden {
   display: none;
+}
+
+.img-upload__field-wrapper {
+  margin-bottom: 30px;
+  color: #000000;
+  position: relative;
+}
+
+.setup-wizard-form__element {
+  position: relative;
+}
+
+.form__error {
+  margin: 0 auto;
+  padding: 10px 15px;
+  width: 200px;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 0.85em;
+  color: rgb(222, 220, 220);
+  text-transform: lowercase;
+  animation: reveal 200ms;
+  background-color: hsl(0 0% 0% / .85);
+  border-radius: 5px;
+  box-shadow: 0 0 5px hsl(0 0% 0% / .95);
+  font-weight: bold;
+  z-index: 2;
 }

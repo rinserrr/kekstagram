@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-new */
 /* eslint-disable no-invalid-this */
 /* eslint-disable indent */
 /* eslint-disable max-nested-callbacks */
@@ -9,6 +11,7 @@ import {imageDraw} from './images-draw.js';
 import {isKeyEnter} from './utils.js';
 import {openUserModal, modalPicturesList} from './image-dialog.js';
 import {imageUpload} from './image-upload.js';
+import {imageUploadValidation} from './image-upload-validation.js';
 
 
 const imgUploadInput = document.querySelector('.img-upload__input');
@@ -17,27 +20,39 @@ const imgUploadInput = document.querySelector('.img-upload__input');
 imageDraw();
 
 
+const onModalPicturesListClick = (evt) => {
+    if (evt.target.nodeName === 'IMG') {
+      openUserModal(evt);
+    }
+};
+
 // открытие модалки по клику
-modalPicturesList.addEventListener('click', (evt) => {
-  if (evt.target.nodeName === 'IMG') {
-    openUserModal(evt);
-  }
-});
+modalPicturesList.addEventListener('click', onModalPicturesListClick);
 
 
-// открытие модалки по Enter
-modalPicturesList.addEventListener('keydown', (evt) => {
+const onmodalPicturesListKeydown = (evt) => {
   if (evt.target.nodeName === 'A') {
     if (isKeyEnter) {
       openUserModal(evt);
     }
   }
-});
+};
+
+// открытие модалки по Enter
+modalPicturesList.addEventListener('keydown', onmodalPicturesListKeydown);
 
 
 // загрузка изображения
 imgUploadInput.addEventListener('change', function (evt) {
   evt.preventDefault();
 
+  // удаляем обработчики onModalPicturesListClick, onmodalPicturesListKeydown
+  modalPicturesList.removeEventListener('click', onModalPicturesListClick);
+  modalPicturesList.removeEventListener('click', onmodalPicturesListKeydown);
+
   imageUpload(this, evt);
+  imageUploadValidation();
 });
+
+
+export {onModalPicturesListClick, onmodalPicturesListKeydown};
