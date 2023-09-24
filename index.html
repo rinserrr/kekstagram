@@ -30,7 +30,7 @@
       <section class="img-upload">
         <div class="img-upload__wrapper">
           <h2 class="img-upload__title  visually-hidden">Загрузка фотографии</h2>
-          <form class="img-upload__form" id="upload-select-image" method="post" enctype="multipart/form-data" autocomplete="off" action=" https://27.javascript.pages.academy/kekstagram" novalidate="true">
+          <form class="img-upload__form" id="upload-select-image" enctype="multipart/form-data" autocomplete="off" method="post" action="https://27.javascript.pages.academy/kekstagram">
 
             <!-- Изначальное состояние поля для загрузки изображения -->
             <fieldset class="img-upload__start">
@@ -115,11 +115,25 @@
 
                 <!-- Добавление хэш-тегов и комментария к изображению -->
                 <fieldset class="img-upload__text text">
-                  <div class="img-upload__field-wrapper">
-                    <input class="text__hashtags" name="hashtags" placeholder="#ХэшТег">
+                  <div class="img-upload__field-wrapper form__item">
+
+                    <label class="setup-wizard-form__element ">
+                      <input type="text" class="text__hashtags" name="hashtags" id="hashtags" placeholder="#ХэшТег" required
+
+                      data-pristine-required-message="Обязательное поле"
+                      >
+                    </label>
+
                   </div>
-                  <div class="img-upload__field-wrapper">
-                    <textarea class="text__description" name="description" placeholder="Ваш комментарий..."></textarea>
+
+
+                  <div class="img-upload__field-wrapper form__item">
+
+                    <label class="setup-wizard-form__element " for="text__description">
+                      <textarea class="text__description" name="description" id="text__description" placeholder="Ваш комментарий..."
+                      ></textarea>
+                    </label>
+
                   </div>
                 </fieldset>
 
@@ -179,7 +193,8 @@
 
         <!-- Кнопка для выхода из полноэкранного просмотра изображения -->
         <!-- <button type="reset" class="big-picture__cancel  cancel" id="picture-cancel">Закрыть</button> -->
-        <div type="reset" class="big-picture__cancel  cancel" id="picture-cancel" tabindex="0">Закрыть</div>
+        <!-- <div type="reset" class="big-picture__cancel  cancel" id="picture-cancel" tabindex="0">Закрыть</div> -->
+        <div class="big-picture__cancel  cancel" id="picture-cancel" tabindex="0">Закрыть</div>
       </div>
     </section>
   </main>
@@ -228,8 +243,8 @@
 
   <!-- Сообщение об успешной загрузке изображения -->
   <template id="success">
-    <section class="success">
-      <div class="success__inner">
+    <section class="success" id="successSection">
+      <div class="success__inner" id="success__inner">
         <h2 class="success__title">Изображение успешно загружено</h2>
         <button type="button" class="success__button">Круто!</button>
       </div>
@@ -241,6 +256,7 @@
     <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
   </template>
 
+  <script src="vendor/pristine/pristine.js"></script>
   <script src="./js/main.js" type="module"></script>
 
 </body>
