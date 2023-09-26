@@ -102,57 +102,57 @@ const closeImageUpload = () => {
 
 const imageUploadValidation = () => {
 
-  // imgUploadForm.addEventListener('submit', (evt) => {
-  //   evt.preventDefault();
-
-  //   const isValid = pristine.validate();
-  //   if (isValid) {
-  //     console.log('Можно отправлять');
-  //     evt.currentTarget.submit();
-
-  //   } else {
-  //     console.log('Форма невалидна');
-  //   }
-  // });
-
-
   imgUploadForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
     const isValid = pristine.validate();
     if (isValid) {
       console.log('Можно отправлять');
+      evt.currentTarget.submit();
 
-      // Create a FormData object and append form data
-      const formData = new FormData(imgUploadForm);
-
-      // Send the form data to the server using fetch
-      fetch('https://27.javascript.pages.academy/kekstagram', {
-        method: 'POST',
-        body: formData,
-      })
-      .then((response) => {
-        if (response.ok) {
-          // Call the uploadValidationMessage function
-          closeImageUpload();
-          uploadValidationMessage();
-
-          document.querySelector('.success__button').addEventListener('click', () => {
-            document.querySelector('.success').classList.add('hidden');
-
-            location.reload();
-          });
-        } else {
-          console.log('Server Error');
-        }
-      })
-      .catch((error) => {
-        console.log('Request Failed', error);
-      });
     } else {
       console.log('Форма невалидна');
     }
   });
+
+
+  // imgUploadForm.addEventListener('submit', (evt) => {
+  //   evt.preventDefault();
+
+  //   const isValid = pristine.validate();
+  //   if (isValid) {
+  //     console.log('Можно отправлять');
+
+  //     // Create a FormData object and append form data
+  //     const formData = new FormData(imgUploadForm);
+
+  //     // Send the form data to the server using fetch
+  //     fetch('https://27.javascript.pages.academy/kekstagram', {
+  //       method: 'POST',
+  //       body: formData,
+  //     })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         // Call the uploadValidationMessage function
+  //         closeImageUpload();
+  //         uploadValidationMessage();
+
+  //         document.querySelector('.success__button').addEventListener('click', () => {
+  //           document.querySelector('.success').classList.add('hidden');
+
+  //           location.reload();
+  //         });
+  //       } else {
+  //         console.log('Server Error');
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log('Request Failed', error);
+  //     });
+  //   } else {
+  //     console.log('Форма невалидна');
+  //   }
+  // });
 
 
   // закрытие формы
