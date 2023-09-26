@@ -1,6 +1,7 @@
 /* eslint-disable no-invalid-this */
 
 import {imageUploadScale} from './image-upload-scale.js';
+import {initSlider} from './image-upload-filter-slider.js';
 
 
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
@@ -28,6 +29,7 @@ const imageUpload = (input, evt) => {
     });
 
     imageUploadScale();
+    initSlider();
   });
 
   reader.readAsDataURL(input.files[0]);
