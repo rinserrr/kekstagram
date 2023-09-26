@@ -8,23 +8,23 @@ const imageUploadFilter = () => {
     }
 
     if (evt.target.classList.contains('effects__preview--chrome')) {
-      imgUploadPreviewScale.style.filter = 'grayscale(0.5)';
+      imgUploadPreviewScale.style.filter = 'grayscale(1)';
     }
 
     if (evt.target.classList.contains('effects__preview--sepia')) {
-      imgUploadPreviewScale.style.filter = 'sepia(0.5)';
+      imgUploadPreviewScale.style.filter = 'sepia(1)';
     }
 
     if (evt.target.classList.contains('effects__preview--marvin')) {
-      imgUploadPreviewScale.style.filter = 'invert(90%)';
+      imgUploadPreviewScale.style.filter = 'invert(100%)';
     }
 
     if (evt.target.classList.contains('effects__preview--phobos')) {
-      imgUploadPreviewScale.style.filter = 'blur(2.5px)';
+      imgUploadPreviewScale.style.filter = 'blur(3px)';
     }
 
     if (evt.target.classList.contains('effects__preview--heat')) {
-      imgUploadPreviewScale.style.filter = 'brightness(2)';
+      imgUploadPreviewScale.style.filter = 'brightness(3)';
     }
   };
 
