@@ -3,11 +3,15 @@
 
 
 import generateArrayImagesState from './images-generator.js';
+import {getData} from './api.js';
+
 
 generateArrayImagesState();
 
-const images = generateArrayImagesState();
-console.log('images : ', images);
+// const images = generateArrayImagesState();
+let images = [];
+
+// console.log('images : ', images);
 
 // console.log(images[0].url);
 
@@ -79,4 +83,15 @@ const imageDrawClear = () => {
 };
 
 
-export {imageDraw, imageDrawClear, images};
+(async function () {
+  try {
+    images = await getData();
+    imageDraw(); // вызываем функцию после получения данных
+    console.log('images : ', images);
+  } catch (e) {
+    console.error(e);
+  }
+})();
+
+
+export {imageDrawClear, images};

@@ -7,7 +7,7 @@
 /* eslint-disable no-console */
 
 
-import {imageDraw} from './images-draw.js';
+// import {imageDraw} from './images-draw.js';
 import {isKeyEnter} from './utils.js';
 import {openUserModal, modalPicturesList} from './image-dialog.js';
 import {imageUpload} from './image-upload.js';
@@ -17,7 +17,7 @@ import {imageUploadValidation} from './image-upload-validation.js';
 const imgUploadInput = document.querySelector('.img-upload__input');
 
 
-imageDraw();
+// imageDraw();
 
 
 const onModalPicturesListClick = (evt) => {
