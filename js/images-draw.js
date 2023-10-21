@@ -87,7 +87,7 @@ const imageDrawClear = () => {
   try {
     images = await getData();
     imageDraw(); // вызываем функцию после получения данных
-    console.log('images : ', images);
+    // console.log('images : ', images);
   } catch (e) {
     console.error(e);
   }

@@ -10,11 +10,13 @@
 import {modalPicturesList} from './image-dialog.js';
 import {onModalPicturesListClick, onmodalPicturesListKeydown} from './main.js';
 import {isKeyEnter, isKeyEscape} from './utils.js';
+import {sendData} from './api.js';
 
 
 const imgUploadForm = document.querySelector('.img-upload__form');
 const imgUploadCancel = document.querySelector('.img-upload__cancel');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
+const sendButton = imgUploadForm.querySelector('.img-upload__submit');
 
 
 const pristine = new Pristine(imgUploadForm, {
@@ -102,18 +104,18 @@ const closeImageUpload = () => {
 
 const imageUploadValidation = () => {
 
-  imgUploadForm.addEventListener('submit', (evt) => {
-    evt.preventDefault();
+  // imgUploadForm.addEventListener('submit', (evt) => {
+  //   evt.preventDefault();
 
-    const isValid = pristine.validate();
-    if (isValid) {
-      console.log('Можно отправлять');
-      evt.currentTarget.submit();
+  //   const isValid = pristine.validate();
+  //   if (isValid) {
+  //     console.log('Можно отправлять');
+  //     evt.currentTarget.submit();
 
-    } else {
-      console.log('Форма невалидна');
-    }
-  });
+  //   } else {
+  //     console.log('Форма невалидна');
+  //   }
+  // });
 
 
   // imgUploadForm.addEventListener('submit', (evt) => {
@@ -153,6 +155,41 @@ const imageUploadValidation = () => {
   //     console.log('Форма невалидна');
   //   }
   // });
+
+
+  sendButton.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    // sendButton.disabled = true; // block the button
+    // sendButton.disabled = true; // block the button
+
+    const isValid = pristine.validate();
+    if (isValid) {
+      console.log('Можно отправлять');
+      // evt.currentTarget.submit();
+
+      sendData(imgUploadForm)
+        .then((response) => {
+          console.log('Отправка успешна', response);
+
+          closeImageUpload();
+          uploadValidationMessage();
+
+          document.querySelector('.success__button').addEventListener('click', () => {
+            document.querySelector('.success').classList.add('hidden');
+
+            location.reload();
+          });
+        })
+        .catch((error) => console.error('Отправка не успешна!!!', error))
+        .finally(() => {
+          // sendButton.disabled = false; // unblock the button
+          sendButton.disabled = true;
+        });
+
+    } else {
+      console.log('Форма невалидна');
+    }
+  });
 
 
   // закрытие формы
