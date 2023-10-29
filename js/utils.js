@@ -24,7 +24,6 @@ const generateIdClosure = (min, max) => {
     while (checkGeneratedId.length < max) {
       const id = getRandomInt(min, max);
 
-      // если получаемый id отсутствует в массиве, добавляем в конец
       if (!checkGeneratedId.includes(id)) {
         checkGeneratedId.push(id);
 
