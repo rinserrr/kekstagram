@@ -3,15 +3,10 @@
 
 
 const initSlider = () => {
-  // слайдер
   const slider = document.querySelector('.effect-level__slider');
-  // главный контейнер слайдера
   const sliderContainer = document.querySelector('.img-upload__effect-level');
-  // скрытый инпут куда заносятся данные от слайдера
   const effectLevel = document.querySelector('.effect-level__value');
-  // const imgUploadEffects = document.querySelector('.img-upload__effects');
   const UL = document.querySelector('.effects__list');
-  // сама картинка
   const imgUploadPreview = document.querySelector('.img-upload__preview img');
 
   let currentEffect;
@@ -53,13 +48,9 @@ const initSlider = () => {
   };
 
 
-  // делегирование списка
-  // чтени input.value и устанавливам шаблоны для слайдера
   const onEffectChange = (evt) => {
     imgUploadPreview.classList.remove(`${currentEffect}`);
-    // сохраняем полученный эффект в currentEffect
     currentEffect = evt.target.value;
-    // console.log(evt.target.value);
     imgUploadPreview.classList.add(`${currentEffect}`);
 
     hideSlider();
@@ -115,9 +106,7 @@ const initSlider = () => {
 
 
   slider.noUiSlider.on('update', () => {
-    // получаем значения слайдера
     effectLevel.value = slider.noUiSlider.get();
-    // console.log(effectLevel.value);
 
     if (currentEffect === 'none') {
       imgUploadPreview.style.filter = 'none';

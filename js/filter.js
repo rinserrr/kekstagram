@@ -27,15 +27,12 @@ const rerenderPhotos = (evt) => {
   clearPhotos();
 
   if (evt.target === filterDefault) {
-    // console.log('filterDefault');
     imageDraw(evt.target.id);
   }
   if (evt.target === filterRandom) {
-    // console.log('filterRandom');
     imageDraw(evt.target.id);
   }
   if (evt.target === filterDiscussed) {
-    // console.log('filterDiscussed');
     imageDraw(evt.target.id);
   }
 };
