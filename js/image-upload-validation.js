@@ -164,7 +164,7 @@ const imageUploadValidation = () => {
 
     const isValid = pristine.validate();
     if (isValid) {
-      console.log('Можно отправлять');
+      // console.log('Можно отправлять');
       // evt.currentTarget.submit();
 
       sendData(imgUploadForm)
@@ -177,7 +177,7 @@ const imageUploadValidation = () => {
           document.querySelector('.success__button').addEventListener('click', () => {
             document.querySelector('.success').classList.add('hidden');
 
-            location.reload();
+            // location.reload();
           });
         })
         .catch((error) => console.error('Отправка не успешна!!!', error))

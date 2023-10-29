@@ -119,7 +119,7 @@ const clsComments = () => {
   bigPictureModal.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
 
-  location.reload();
+  // location.reload();
 };
 
 

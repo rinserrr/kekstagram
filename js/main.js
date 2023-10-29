@@ -12,6 +12,7 @@ import {isKeyEnter} from './utils.js';
 import {openUserModal, modalPicturesList} from './image-dialog.js';
 import {imageUpload} from './image-upload.js';
 import {imageUploadValidation} from './image-upload-validation.js';
+import {initFiltering} from './filter.js';
 
 
 const imgUploadInput = document.querySelector('.img-upload__input');
@@ -53,6 +54,9 @@ imgUploadInput.addEventListener('change', function (evt) {
   imageUpload(this, evt);
   imageUploadValidation();
 });
+
+
+initFiltering();
 
 
 export {onModalPicturesListClick, onmodalPicturesListKeydown};
